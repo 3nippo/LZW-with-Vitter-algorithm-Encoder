@@ -14,12 +14,12 @@ class TLZW {
     public:
         typedef int TCodeType;
         TLZW();
-		void PrepForWork(const std::string &sName, const std::string &rName, char keys);
+        void PrepForWork(const std::string &sName, const std::string &rName, char keys);
         void Encode(TBitIO &Result);
         void Decode(TBitIO &Source);
-		void Clear();
+        void Clear();
         unsigned long long UncompressedSize();
-		~TLZW();
+        ~TLZW();
     private:
 
         class EncodeTable : public TPrefTree {
@@ -28,7 +28,7 @@ class TLZW {
             public:
                 void SetSize(const unsigned long long &givenSize);
                 void AddWord(std::string &str);
-				void AddWord(std::string &str, std::size_t nodeNum);
+                void AddWord(std::string &str, std::size_t nodeNum);
         };
 
         class DecodeTable : public std::vector<std::string> {
@@ -38,25 +38,25 @@ class TLZW {
                 void SetSize(const unsigned long long &givenSize);
                 void AddCode(std::string &str);
                 void Clear();
-				std::size_t Size();
+                std::size_t Size();
         };
 
-		void SendBits(TCodeType bufToSend, TBitIO &Result);
-		TCodeType ReceiveBits(TBitIO &Source);
-		void EncCheckCodeLength();
-		bool IncCodeLength();
+        void SendBits(TCodeType bufToSend, TBitIO &Result);
+        TCodeType ReceiveBits(TBitIO &Source);
+        void EncCheckCodeLength();
+        bool IncCodeLength();
 
         int ToSR;
-		unsigned long long Sup;
+        unsigned long long Sup;
 
         static const unsigned long long Fast;
         static const unsigned long long Best;
         char Keys;
         EncodeTable CodeTable;
         DecodeTable WordTable;
-		std::ostream *Result;
+        std::ostream *Result;
         std::istream *Source;
-		std::fstream Fin;
+        std::fstream Fin;
         std::fstream Fout;
 
         unsigned long long Uncompressed;

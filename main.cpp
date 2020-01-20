@@ -48,8 +48,8 @@ char GetKeys(std::string S) {
 }
 
 int main(int argc, char const *argv[]) {
-	std::ios_base::sync_with_stdio(false);
-  	std::cin.tie(nullptr);
+    std::ios_base::sync_with_stdio(false);
+      std::cin.tie(nullptr);
     int flag = 0;
     char key = 0;
     std::string name;
@@ -64,27 +64,27 @@ int main(int argc, char const *argv[]) {
         }
     std::string resName = name;
 
-	if (key & ((1 << 5) | (1 << 7)))
-		key |= ((1 << 3) | (1 << 4));
+    if (key & ((1 << 5) | (1 << 7)))
+        key |= ((1 << 3) | (1 << 4));
 
     if (!name.empty() && !(key & 1 << 6)) {
-		if (key & 1 << 3) {
-			if (name.compare(name.size() - 3, 3, ".gz") != 0)
-				name += ".gz";
-			else
-				resName.erase(resName.begin() + resName.size() - 3, resName.end());
-		} else {
-			if (name.compare(name.size() - 3, 3, ".gz") == 0)
-	            resName.erase(resName.begin() + resName.size() - 3, resName.end());
-	        else
-	            resName += ".gz";
-		}
+        if (key & 1 << 3) {
+            if (name.compare(name.size() - 3, 3, ".gz") != 0)
+                name += ".gz";
+            else
+                resName.erase(resName.begin() + resName.size() - 3, resName.end());
+        } else {
+            if (name.compare(name.size() - 3, 3, ".gz") == 0)
+                resName.erase(resName.begin() + resName.size() - 3, resName.end());
+            else
+                resName += ".gz";
+        }
     }
 
-	try {
-    	TGZIP Arch(name, resName, key);
-	}
-	catch (const std::runtime_error&) {}
+    try {
+        TGZIP Arch(name, resName, key);
+    }
+    catch (const std::runtime_error&) {}
 
-	return 0;
+    return 0;
 }

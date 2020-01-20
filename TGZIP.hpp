@@ -14,22 +14,22 @@
 
 class TGZIP {
     struct TGZData {
-		std::string Name;
+        std::string Name;
         std::size_t Compressed;
         std::size_t Uncompressed;
     };
     private:
-		THuff Huff;
-		TLZW LZW;
+        THuff Huff;
+        TLZW LZW;
 
         char Key;
         std::vector<TGZData> Results;
         void PrintInfo();
-		void Encode();
-		void Decode();
-		void DumpFromIn();
-		void DumpToOut();
+        void Encode();
+        void Decode();
+        void DumpFromIn();
+        void DumpToOut();
     public:
         TGZIP(std::string &name, std::string &resName, char key);
-		~TGZIP();
+        ~TGZIP();
 };
