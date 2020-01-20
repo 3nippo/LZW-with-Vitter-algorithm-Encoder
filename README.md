@@ -1,3 +1,5 @@
+Complete description lies in "Report.pdf".
+
 # LZW
 
 LZW is a dictionary based compression algorithm. It works quite simple --- if current word was seen before then we do nothing. If it was then we write code of the word we have read in the last step and add new word in the dictionary. Decoding process is almost simmetric to encoding.
